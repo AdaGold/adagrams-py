@@ -90,6 +90,19 @@ def uses_available_letters(word, letters):
     # false_word_in_letter_bank
     # false_word_overuses_letter
     # does_not_change_letter_bank
+    def uses_available_letters(word, letters):
+    # compare_letters = []
+    # for letter in letters:
+    #     compare_letters.append(letter)
+    compare_letters = copy.deepcopy(letters)
+    for ltr_word in word:
+        print(ltr_word)
+        #for ltr_letters in letters:
+        if ltr_word not in compare_letters:
+            return False
+        else:
+            compare_letters.remove(ltr_word)
+    return True
     pass
 
 
