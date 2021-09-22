@@ -60,8 +60,7 @@ $ cd ~/Developer/projects
 $ git clone ...
 ```
 
-Use `ls` to confirm there's a new project folder
-
+Use `ls` to confil
 5. Move your location into this project folder
 
 ```bash
@@ -198,7 +197,7 @@ We recommend spending at least a portion of the time pair programming and workin
 
 Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests with your pair. Make sure you both can run `$ pytest` and see the tests fail.
 
-If, after you and your pair have taken some time to think through the problem and would like direction for how to dissect the problem, or if you need clarity on the terms/vocabulary we used in this project, you can check out [a small hint we've provided](./project_docs/hints.md).
+If, after you and your pair have taken some time to think through the problem and would like direction for how to dissect the problem, or if you need clarity on the terms/vocabulary we used in this project, you can check out [a small hinupt we've provided](./project_docs/hints.md).
 
 ### Wave 1: draw_letters
 
