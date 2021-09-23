@@ -76,7 +76,6 @@ def draw_letters():
                 letter_pool_lst.append(x)
 
     letters = random.sample(letter_pool_lst, 10)
-
     return letters
 
 
@@ -111,10 +110,11 @@ def get_highest_word_score(word_list):
     for word in word_list:
         word_score = score_word(word)
         word_score_dict[word] = word_score
+   
     
     highest_score = 0
     highest_score_word = ""
-    highest_score_dict = {}
+    hst_score_and_word = ""
     
 
     for word_name, word_score in word_score_dict.items():
@@ -128,12 +128,6 @@ def get_highest_word_score(word_list):
             elif len(word_name) < len(highest_score_word) and len(highest_score_word) != 10:
                 highest_score_word = word_name
                 highest_score = word_score
-        
-    highest_score_dict[highest_score_word] = highest_score
-
-    highest_score_tup = highest_score_dict.items()
-
-    return list(highest_score_tup)[0]
     
-   
-    
+    hst_score_and_word= (highest_score_word, highest_score)
+    return hst_score_and_word
