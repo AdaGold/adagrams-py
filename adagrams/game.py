@@ -68,12 +68,12 @@ def draw_letters():
     letter_pool_lst = []
     tup = ""
 
-    for letter, numby in LETTER_POOL.items():
-        tup = tuple(letter*numby)
+    for letter, frequency in LETTER_POOL.items():
+        tup = tuple(letter*frequency)
 
-        for t in tup:
-            for x in t:
-                letter_pool_lst.append(x)
+        for letter_frequency in tup:
+            for letter in letter_frequency:
+                letter_pool_lst.append(letter)
 
     letters = random.sample(letter_pool_lst, 10)
     return letters
