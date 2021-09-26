@@ -29,7 +29,6 @@ LETTER_KEY = {
     'Z': 1
 }
 
-# Wave 1 
 def draw_letters():
     letter_pool = []
     for letter, frequency in LETTER_KEY.items():
@@ -44,30 +43,57 @@ def draw_letters():
     
     return user_hand 
 
-# Wave 2 
-# Approach 
-# iterate over each letter in the word...
-#   count the # of times this letter occurs in the word
-#   count the # of times this letter occurs in the letter_bank (the user's 
-#   hand) 
-#   -if the the # of times a letter occurs in the word is HIGHER than the number
-#      of times it occurs in the user's available letter bank...
-#      -return False (because that'd mean it's not a valid word)
-
-#  If in the end, false was never returned (which means every letter was 
-#  looked at and determined to exist in the user's letter bank AND not occur 
-#  too many times), return True. 
-
 def uses_available_letters(word, letter_bank):
-    for letter in word:
+    for letter in word: 
         if word.count(letter) > letter_bank.count(letter):
             return False 
     return True
 
-# Wave 3 
-def score_word(word):
-    pass 
+def score_word(word): 
+    word = word.upper() 
+    score = 0
+    for letter in word:
+        if letter in ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T']:
+            score += 1 
+        elif letter in ['D', 'G']:
+            score += 2
+        elif letter in ['B', 'C', 'M', 'P']:
+            score += 3
+        elif letter in ['F', 'H', 'V', 'W', 'Y']:
+            score += 4
+        elif letter in ['K']:
+            score += 5
+        elif letter in ['J', 'X']:
+            score += 8
+        elif letter in ['Q', 'Z']:
+            score += 10 
+    
+    if len(word) >= 7 and len(word) <= 10:
+        score += 8 
+    
+    return score
 
 # Wave 4 
 def get_highest_word_score(word_list):
-    pass
+    max_tuple = ("placeholder", 0)
+
+    for word in word_list: 
+        word_tuple = (word, score_word(word)) 
+        if word_tuple[1] > max_tuple[1]: # if score is higher, reassign max_tuple
+            max_tuple = word_tuple
+        elif word_tuple[1] == max_tuple[1]: # if scores are same... do tiebreaker...
+            pass 
+            # check if the current max_tuple's word has as length of 10
+            #  -if so, then pass (do nothing b/c we want the first one to get chosen)
+            # check if the current word_tuple's word has a length of 10
+            #  -if so, reassign max_tuple to this current word_tuple
+            # check if the length of the current word_tuple's word is less than the length of max_tuple's word
+            #  -if so, reassign max_tuple to this current word_tuple
+    
+    return max_tuple 
+
+# TEST CASES
+print(get_highest_word_score(["A", "WWW"])) # 1 vs. 12   ---> ("WWW", 12)
+print(get_highest_word_score(["QQQ", "BBBBBBBBBB"])) # 30 vs. 30 --> ("BBBBBBBBBB", 30) 
+print(get_highest_word_score(["Q", "Z"])) # 10 vs. 10 ("Q", 10)
+print(get_highest_word_score(["J", "AAAAAAAA"])) # 8 vs. 8 ("J", 8)
