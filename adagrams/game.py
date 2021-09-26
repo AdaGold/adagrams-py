@@ -73,33 +73,19 @@ def score_word(word):
     
     return score
 
-# Wave 4 
 def get_highest_word_score(word_list):
     max_tuple = ("placeholder", 0)
 
     for word in word_list: 
         word_tuple = (word, score_word(word)) 
-        if word_tuple[1] > max_tuple[1]: # if score is higher, reassign max_tuple
+        if word_tuple[1] > max_tuple[1]: 
             max_tuple = word_tuple
-        elif word_tuple[1] == max_tuple[1]: # if scores are same... do tiebreaker...
+        elif word_tuple[1] == max_tuple[1]: 
             if len(max_tuple[0]) == 10:
                 pass
             elif len(word_tuple[0]) == 10:
                 max_tuple = word_tuple
             elif len(word_tuple[0]) < len(max_tuple[0]):
                 max_tuple = word_tuple
-    
-            # check if the current max_tuple's word has as length of 10
-            #  -if so, then pass (do nothing b/c we want the first one to get chosen)
-            # check if the current word_tuple's word has a length of 10
-            #  -if so, reassign max_tuple to this current word_tuple
-            # check if the length of the current word_tuple's word is less than the length of max_tuple's word
-            #  -if so, reassign max_tuple to this current word_tuple
-    
-    return max_tuple 
 
-# TEST CASES
-#print(get_highest_word_score(["A", "WWW"])) # 1 vs. 12   ---> ("WWW", 12)
-#print(get_highest_word_score(["QQQ", "BBBBBBBBBB"])) # 30 vs. 30 --> ("BBBBBBBBBB", 30) 
-#print(get_highest_word_score(["Q", "Z"])) # 10 vs. 10 ("Q", 10)
-#print(get_highest_word_score(["J", "AAAAAAAA"])) # 8 vs. 8 ("J", 8)
+    return max_tuple 
