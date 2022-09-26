@@ -69,7 +69,16 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pass
+    letter_bank_copy = copy.copy(letter_bank)
+    word = word.upper()
+    for letter in word:
+        if letter in letter_bank_copy:
+            letter_bank_copy.remove(letter)
+        else:
+            return False
+    return True
+
+uses_available_letters('bEd', ['A', 'B', 'C', 'D', 'E', 'F'])
 
 def score_word(word):
     pass
