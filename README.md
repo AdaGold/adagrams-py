@@ -1,5 +1,7 @@
 # AdaGrams
 
+Practice comment - Adelle. 
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
