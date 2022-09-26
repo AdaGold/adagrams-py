@@ -78,10 +78,24 @@ def uses_available_letters(word, letter_bank):
             return False
     return True
 
-uses_available_letters('bEd', ['A', 'B', 'C', 'D', 'E', 'F'])
+
+SCORE_CHART = {
+        1: ["A", "E", "I", "O", "U", "N", "R", "S", "T"],
+        2: ["D", "G"],
+        3: ["B", "C", "M", "P"],
+        4: ["F", "H", "V", "W", "Y"],
+        5: ["K"],
+        8: ["J", "X"],
+        10: ["Q", "Z"]
+    }
 
 def score_word(word):
-    pass
+    value = 0
+    for letter in word:
+        if key, value in SCORE_CHART.values()
+    if len(word) in range(7, 11):
+        value += 8
+    return value
 
 def get_highest_word_score(word_list):
     pass
