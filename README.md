@@ -309,4 +309,8 @@ Implement a function called `get_highest_word_score` in `game.py`. This method s
 
 
 
-
+Returns
+Wave 1 draw_letters: array of 10 strings ["d","e","f" ... ]
+Wave 2 use_available_letters: expecting boolean based on validity of input (word and letter bank)
+Wave 3 score_word: returns integer value corresponding to points a word gets
+Wave 4 get_highest_word_score: returns a tuple that represents winning word and score
