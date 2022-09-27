@@ -91,11 +91,11 @@ SCORE_CHART = {
 
 def score_word(word):
     value = 0
+    word = word.upper()
     for letter in word:
-        if key, value in SCORE_CHART.values()
-    if len(word) in range(7, 11):
-        value += 8
-    return value
+        for k, v in SCORE_CHART.values():
+
+
 
 def get_highest_word_score(word_list):
     pass
