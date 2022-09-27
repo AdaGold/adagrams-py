@@ -2,19 +2,15 @@
 <!-- 
 Pair Plan:
 
-Separately work on waves 1 & 4:
+Separately work on waves 1-3:
 Wave 1: Renee
 Wave 2: Pair
 Wave 3: Pair
 Wave 4: Yael
 
-Come together Tuesday to review waves and complete 2 & 3
+Come together to go over waves 1-3 and pair program wave 4
 Wednesday
 
-- Wave 1: returns array of strings representing player hand
-- Wave 2: return boolean to check if letters in input are available in ltter_bank
-- Wave 3: takes in param word and returns int score for word
-- Wave 4: returns tuple that represents winning word and score; pseudocode to plugin functions from previous waves
 
 Communication:
 Communicate via Slack for waves 1-3 unless video support needed
