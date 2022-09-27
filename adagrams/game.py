@@ -7,7 +7,21 @@ def draw_letters():
     return hand
 
 def uses_available_letters(word, letter_bank):
-    pass
+    letter_bank_dict = {}
+    for letter in letter_bank:
+        if letter not in letter_bank_dict:
+            letter_bank_dict[letter] = 1
+        else:
+            letter_bank_dict[letter] += 1
+    for letter in word.upper():
+        if letter not in letter_bank_dict:
+            return False
+        elif letter_bank_dict[letter] == 0:
+            return False
+        else:
+            letter_bank_dict[letter] -= 1
+    return True
+
 
 def score_word(word):
     scores = {
