@@ -10,7 +10,22 @@ def uses_available_letters(word, letter_bank):
     pass
 
 def score_word(word):
-    pass
+    scores = {
+        "AEIOULNRST" : 1,
+        "DG" : 2,
+        "BCMP" : 3,
+        "FHVWY" : 4,
+        "K" : 5,
+        "JX" : 8,
+        "QZ" : 10
+    }
+
+    score = [val for letter in word.upper() for key, val in scores.items() if letter in key]
+
+    if len(score) >= 7:
+        score.append(8)
+
+    return sum(score)
 
 def get_highest_word_score(word_list):
     score_list = [(word, score_word(word)) for word in word_list]
