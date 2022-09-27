@@ -30,6 +30,16 @@ LETTER_POOL = {
     'Z': 1
 }
 
+SCORE_CHART = {
+        1: ["A", "E", "I", "O", "U", "N", "R", "S", "T"],
+        2: ["D", "G"],
+        3: ["B", "C", "M", "P"],
+        4: ["F", "H", "V", "W", "Y"],
+        5: ["K"],
+        8: ["J", "X"],
+        10: ["Q", "Z"]
+    }
+
 
 # create a helper function to create the list
 # def build_list():
@@ -42,18 +52,6 @@ LETTER_POOL = {
 # build_list()
 
 def draw_letters():
-    # build a hand of 10 letters for user
-    # return array of ten strings (each string should contain one letter)
-    # return looks like ["A", "B", etc]
-    # OPTION 1
-    # make a copy of letter_pool 
-    # multiply key by value and create new list
-    # OPTION 2
-    # make a deep copy of the letter_pool -----> I actually thik it can be a shallow copy since no items are mutable
-    # create a new list from all the keys
-    # Radomnly choose a letter from the new list
-    # if the letter key exists , add to user list, subract one from value of that letter
-    # when letter value == 0 - remove from list
     letters_for_user = []
     fresh_copy = copy.copy(LETTER_POOL)
     while len(letters_for_user) < 10:
@@ -79,15 +77,6 @@ def uses_available_letters(word, letter_bank):
     return True
 
 
-SCORE_CHART = {
-        1: ["A", "E", "I", "O", "U", "N", "R", "S", "T"],
-        2: ["D", "G"],
-        3: ["B", "C", "M", "P"],
-        4: ["F", "H", "V", "W", "Y"],
-        5: ["K"],
-        8: ["J", "X"],
-        10: ["Q", "Z"]
-    }
 
 def score_word(word):
     score = 0
@@ -101,4 +90,21 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    pass
+    # return tuple with winning word and its score
+    #calculate score - call score_word function
+    # how to store scores? maybe a list?
+    scores = []
+    for word in word_list:
+        scores.append(score_word(word))
+    max_score = max(scores)
+    highest_score_words = []
+    for i in range(len(scores)):
+        if scores[i] == max_score:
+            highest_score_words.append(word_list[i])
+    if len(highest_score_words) == 1:
+        return highest_score_words[0], max_score
+    else:
+        pass
+
+#this function needs to be completed
+    
