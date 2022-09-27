@@ -90,12 +90,15 @@ SCORE_CHART = {
     }
 
 def score_word(word):
-    value = 0
-    for letter in word:
-        if key, value in SCORE_CHART.values()
+    score = 0
+    word = word.upper()
+    for letter in word: 
+        for key, value in SCORE_CHART.items():
+            if letter in value:
+                score += key
     if len(word) in range(7, 11):
-        value += 8
-    return value
+        score += 8
+    return score
 
 def get_highest_word_score(word_list):
     pass
