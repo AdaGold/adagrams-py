@@ -41,15 +41,6 @@ SCORE_CHART = {
     }
 
 
-# create a helper function to create the list
-# def build_list():
-#     new_list = []
-#     for key, value in LETTER_POOL.items():
-#         new_value = [key] * value
-#         new_list += new_value  
-#     print(new_list)
-
-# build_list()
 
 def draw_letters():
     letters_for_user = []
@@ -61,9 +52,6 @@ def draw_letters():
             letters_for_user.append(letter)
             fresh_copy[letter] -= 1
     return letters_for_user
-    # print(letters_for_user)
-    # print(fresh_copy)
-    # print(LETTER_POOL)
 
 
 def uses_available_letters(word, letter_bank):
@@ -90,33 +78,19 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    #calculate score - call score_word function
-    scores = []
-    for word in word_list:
-        scores.append(score_word(word))
-    max_score = max(scores)
-    highest_score_words = []
-    for i in range(len(scores)):
-        if scores[i] == max_score:
-            highest_score_words.append(word_list[i])
-    # returning if there is only one high score
+
+    max_score_word_1 = max(word_list, key = score_word)
+    max_score = score_word(max_score_word_1)
+    highest_score_words = [word for word in word_list if score_word(word) == max_score]
+ 
     if len(highest_score_words) == 1:
-        return highest_score_words[0], max_score
-    # # in the case of a tie in score, return the word with fewest letters (unless 10)
-    # len_each_word = []
-    # for word in highest_score_words:
-    #     if len(word) == 10:
-    #         return word, max_score
-    #     len_each_word.append(len(word))
-    # min_length = min(len_each_word)
-    # for word in highest_score_words:   
-    #     if len(word) == min_length:
-    #         return word, max_score
-    min_length = 10
+        return max_score_word_1, max_score
+
     for word in highest_score_words:
         if len(word) == 10:
             return word, max_score
-        if len(word) < min_length:
-            min_length = len(word)
-    return word, max_score
-            
+
+    min_length_word = min(highest_score_words, key = len)
+    return min_length_word, max_score
+
+
