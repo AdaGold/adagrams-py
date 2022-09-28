@@ -90,9 +90,7 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
-    # return tuple with winning word and its score
     #calculate score - call score_word function
-    # how to store scores? maybe a list?
     scores = []
     for word in word_list:
         scores.append(score_word(word))
@@ -105,15 +103,20 @@ def get_highest_word_score(word_list):
     if len(highest_score_words) == 1:
         return highest_score_words[0], max_score
     # # in the case of a tie in score, return the word with fewest letters (unless 10)
-    len_each_word = []
-    for word in highest_score_words:
-        len_each_word.append(len(word))
-    min_length = min(len_each_word)
+    # len_each_word = []
+    # for word in highest_score_words:
+    #     if len(word) == 10:
+    #         return word, max_score
+    #     len_each_word.append(len(word))
+    # min_length = min(len_each_word)
+    # for word in highest_score_words:   
+    #     if len(word) == min_length:
+    #         return word, max_score
+    min_length = 10
     for word in highest_score_words:
         if len(word) == 10:
             return word, max_score
-    for word in highest_score_words:   
-        if len(word) == min_length:
-            return word, max_score
-
-
+        if len(word) < min_length:
+            min_length = len(word)
+    return word, max_score
+            
