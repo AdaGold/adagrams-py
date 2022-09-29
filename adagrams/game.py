@@ -44,8 +44,7 @@ def score_word(word):
 def get_highest_word_score(word_list):
     score_list = [(word, score_word(word)) for word in word_list]
 
-    highest_scoring = []
-    highest_scoring.append(score_list[0])
+    highest_scoring = [score_list[0]]
 
     for word in score_list[1:]:
         if word[1] == highest_scoring[0][1]:
