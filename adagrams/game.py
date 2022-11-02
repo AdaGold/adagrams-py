@@ -53,8 +53,38 @@ def draw_letters():
 
     return draw
 
+#creates a dictionary which keys are the elements on the letters array 
+#and the value is their frecuency
+def create_dic_repeatead_letters(letters):
+    letters_dict = dict()
+
+    for letter in letters:
+        if letter in letters_dict.keys():
+            letters_dict[letter] += 1
+        else:
+            letters_dict[letter] = 1
+
+    return letters_dict
+
 def uses_available_letters(word, letter_bank):
-    pass
+    #Validate input
+    if word == "" or letter_bank is None:
+        return False
+
+    #Create a dictionary with the number of each letter of the letter bank
+    letter_bank_dict = create_dic_repeatead_letters(letter_bank)
+
+    #Compare each letter of word with the dictionary and their frecuency
+    for letter in word:
+        up_letter = letter.upper()
+        if up_letter not in letter_bank_dict.keys():
+            return False
+        if letter_bank_dict[up_letter]==0:
+            return False  #The letter has been used more times than allowed
+        else:
+            letter_bank_dict[up_letter]+=-1
+
+    return True
 
 def score_word(word):
     pass
