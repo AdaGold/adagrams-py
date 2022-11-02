@@ -56,6 +56,8 @@ LETTERS_VALUES = {"A":1,
                   "Y":4,
                   "Z":10}
 
+WINNER_LEN = 10
+
 def gen_pool_letters(pool_dict):
     my_pool = list()
     for letter,frecuency in pool_dict.items():
@@ -131,4 +133,43 @@ def score_word(word):
     return points
 
 def get_highest_word_score(word_list):
-    pass
+    if word_list is None: 
+        return "",0
+
+    scores = dict()
+    max_score = 0
+    winner_word = ""
+    for word in word_list:
+        score = score_word(word)
+        if score>max_score:
+            max_score = score
+            winner_word = word
+            scores[score] = list()
+            scores[score].append(word)
+        elif score == max_score:
+            scores[score].append(word)
+
+    #There are words with the same score
+    if len(scores[max_score])> 1:
+        min_len = WINNER_LEN-1
+        words_same_len = dict()
+        for word in scores[max_score]:
+            lenght = len(word)
+            if lenght == WINNER_LEN:
+                return word, max_score
+            if lenght < min_len:
+                min_len = lenght
+                winner_word = word
+                words_same_len[min_len] = list()
+                words_same_len[min_len].append(word)
+                continue
+            if lenght == min_len: #there are more words with the same lenght
+                words_same_len[min_len].append(word)
+
+        winner_word = words_same_len[min_len][0]
+    
+    return winner_word,max_score
+
+
+
+    
