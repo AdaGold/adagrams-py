@@ -29,6 +29,33 @@ POOL_RULES = {"A":9,
 
 SIZE_OF_DRAW = 10
 
+LETTERS_VALUES = {"A":1,
+                  "B":3,
+                  "C":3,
+                  "D":2,
+                  "E":1,
+                  "F":4,
+                  "G":2,
+                  "H":4,
+                  "I":1,
+                  "J":8,
+                  "K":5,
+                  "L":1,
+                  "M":3,
+                  "N":1,
+                  "O":1,
+                  "P":3,
+                  "Q":10,
+                  "R":1,
+                  "S":1,
+                  "T":1,
+                  "U":1,
+                  "V":4,
+                  "W":4,
+                  "X":8,
+                  "Y":4,
+                  "Z":10}
+
 def gen_pool_letters(pool_dict):
     my_pool = list()
     for letter,frecuency in pool_dict.items():
@@ -38,7 +65,7 @@ def gen_pool_letters(pool_dict):
     return my_pool
 
 #def init_game():
- #   POOL = gen_pool_letters(POOL_RULES)
+#   POOL = gen_pool_letters(POOL_RULES)
 
 def draw_letters():
     draw = list()
@@ -87,7 +114,21 @@ def uses_available_letters(word, letter_bank):
     return True
 
 def score_word(word):
-    pass
+    points = 0
+    if word is None:
+        return points
+
+    for letter in word:
+        letter_up = letter.upper()
+        if letter_up not in LETTERS_VALUES.keys():
+            return 0
+        points += LETTERS_VALUES[letter_up]
+
+    word_len = len(word)
+    if word_len>=7 and word_len<=10 :
+        points+=8
+
+    return points
 
 def get_highest_word_score(word_list):
     pass
