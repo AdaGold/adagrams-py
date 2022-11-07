@@ -66,16 +66,13 @@ def gen_pool_letters(pool_dict):
 
     return my_pool
 
-#def init_game():
-#   POOL = gen_pool_letters(POOL_RULES)
-
 def draw_letters():
     draw = list()
     my_ran_pool = gen_pool_letters(POOL_RULES)
     
     #generate random
     random.seed()
-    for i in range(0,SIZE_OF_DRAW):
+    while len(draw) < SIZE_OF_DRAW:
         ran_num = random.randint(0,len(my_ran_pool)-1)
         draw.append(my_ran_pool[ran_num])
         my_ran_pool.pop(ran_num)
@@ -108,10 +105,10 @@ def uses_available_letters(word, letter_bank):
         up_letter = letter.upper()
         if up_letter not in letter_bank_dict.keys():
             return False
-        if letter_bank_dict[up_letter]==0:
+        if letter_bank_dict[up_letter] == 0:
             return False  #The letter has been used more times than allowed
         else:
-            letter_bank_dict[up_letter]+=-1
+            letter_bank_dict[up_letter] -= 1
 
     return True
 
@@ -141,7 +138,7 @@ def get_highest_word_score(word_list):
     winner_word = ""
     for word in word_list:
         score = score_word(word)
-        if score>max_score:
+        if score > max_score:
             max_score = score
             winner_word = word
             scores[score] = list()
@@ -150,7 +147,7 @@ def get_highest_word_score(word_list):
             scores[score].append(word)
 
     #There are words with the same score
-    if len(scores[max_score])> 1:
+    if len(scores[max_score]) > 1:
         min_len = WINNER_LEN-1
         words_same_len = dict()
         for word in scores[max_score]:
