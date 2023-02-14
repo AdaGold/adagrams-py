@@ -6,11 +6,10 @@
 - Reading tests
 - Using git to maintain code
 - Manipulating and processing data in lists and strings
-- Practicing pair-programming techniques
 
 ## Goal
 
-An [anagram](https://en.wikipedia.org/wiki/Anagram) is a word or phrase formed by rearranging the letters of a different word or phrase. In this project you and your partner will be creating _Adagrams_, a game in which a player is given a random set of letters and must make an anagram using those letters.  Each submitted word will score points.
+An [anagram](https://en.wikipedia.org/wiki/Anagram) is a word or phrase formed by rearranging the letters of a different word or phrase. In this project you will be creating _Adagrams_, a game in which a player is given a random set of letters and must make an anagram using those letters.  Each submitted word will score points.
 
 While working on _Adagrams_, it may help to think of a physical metaphor for this game, such as other common word games like _Scrabble_ or _Bananagrams_. These games all feature a _pool_ of letter _tiles_ that the player _draws_ from.
 
@@ -18,43 +17,21 @@ In this version of _Adagrams_, we will only be working with the English alphabet
 
 ![an image of a pile of letter tiles](images/letter-tiles.jpeg)
 
-## Pair Programming
-
-Utilize good pair programming practices. Refer to this [medium article](https://medium.com/@weblab_tech/pair-programming-guide-a76ca43ff389), and the lesson in Learn titled Intro to Pair Programming from Approaching a Problem if you need a refresher for some best practices. Switch _driver_ and _navigator_ roles often. When there is uncertainty or confusion, step away from the keyboard and discuss, plan, and document on paper or whiteboard before continuing.
-
 ## One-Time Project Setup
 
-Follow these directions once, a the beginning of your project:
+Follow these directions once, at the beginning of your project:
 
-*Only one member of the team should complete the following two steps steps:*
-
-1. In Github, click on the "Fork" button in github and fork the repository to your Github account.  This will make a copy of the project in your github account. 
-
-![Fork Button](images/fork.png)
-
-2. In Github, add the other member(s) of your team as collaborators to the repository. Do this by a The student who forked the respository should first choosing **Settings** from the top menu bar, then **Manage access** from the left navigation, and finally **Invite teams or people**.
-
-You can find detailed instructions [here](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/).
-
-![Settings](images/settings.png)
-
-<img src="images/manage-access.png" alt="Manage access" width="250"/>
-
-![Invite teams or people](images/invite.png)
-
-The member(s) who are invite will need to accept the invitation either by accepting an email invitation or accepting the invitation in Github.
-
-Both members of the team will be working from the same forked repository.  Be sure to follow proper git protocol from the Intro to Git topic in Learn.
-
-*Each member of the pair should complete the following steps:*
-
-3. Navigate to your projects folder named `projects`
+1. Navigate to your projects folder named `projects`
 
 ```bash
 $ cd ~/Developer/projects
 ```
 
-4. "Clone" (download a copy of this project) into your projects folder. This command makes a new folder called `adagrams-py`, and then puts the project into this new folder.  Make sure you are cloning from your copy of the project and not the class version (ada-cX).
+2. In Github click on the "Fork" button in github and fork the repository to your Github account.  This will make a copy of the project in your github account. 
+
+![Fork Button](images/fork.png)
+
+3. "Clone" (download a copy of this project) into your projects folder. This command makes a new folder called `adagrams-py`, and then puts the project into this new folder.  Make sure you are cloning from your copy of the project and not the class version (ada-cX).
 
 ```bash
 $ git clone ...
@@ -62,19 +39,19 @@ $ git clone ...
 
 Use `ls` to confirm there's a new project folder
 
-5. Move your location into this project folder
+4. Move your location into this project folder
 
 ```bash
 $ cd adagrams-py
 ```
 
-6. Create a virtual environment named `venv` for this project:
+5. Create a virtual environment named `venv` for this project:
 
 ```bash
 $ python3 -m venv venv
 ```
 
-7. Activate this environment:
+6. Activate this environment:
 
 ```bash
 $ source venv/bin/activate
@@ -85,7 +62,7 @@ Verify that you're in a python3 virtual environment by running:
 - `$ python --version` should output a Python 3 version
 - `$ pip --version` should output that it is working with Python 3
 
-8. Install dependencies once at the beginning of this project with
+7. Install dependencies once at the beginning of this project with
 
 ```bash
 # Must be in activated virtual environment
@@ -93,12 +70,7 @@ $ pip install -r requirements.txt
 ```
 
 Summary of one-time project setup:
-
-One person:
 - [ ] Fork the project respository
-- [ ] Invite team members to the respository
-
-All team members:
 - [ ] `cd` into your `projects` folder
 - [ ] Clone the project onto your machine
 - [ ] `cd` into the `adagrams-py` folder
@@ -121,7 +93,7 @@ $ source venv/bin/activate
 $ python main.py wave
 ```
 
-3. Use play-testing wth your partner to guide your development.
+3. Use play-testing to guide your development.
 
 4. Use tests to verify your functions after thoroughly play-testing. See instructions for running tests in the section below. *A complete set of unit tests is provided for this project.*
 
@@ -133,11 +105,9 @@ $ git add .
 $ git commit -m "meaningful message explaining your commit"
 ```
 
-6. Consider switching driver/navigator rolls. Make sure the current driver pushes using `git push` and the new driver pulls using `git pull`.
+6. Move on to the next wave!
 
-7. Move on to the next wave!
-
-8. When you are finished working for the day, deactivate your environment with deactivate or closing the Terminal tab/window
+7. When you are finished working for the day, deactivate your environment with deactivate or closing the Terminal tab/window
 
 ```bash
 $ deactivate
@@ -183,22 +153,15 @@ You will use play-testing and unit tests to drive your development.
 
 At submission time, no matter where you are, submit the project via Learn.
 
-In addition to submitting your Pull Request, submit a reflection the the pair programming reflection prompt.
-
+This will let us give feedback on what you've finished so that you can be better prepared for the next project.
 
 ## Project Directions
 
-### Setup a Pair Plan
-
-First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience.
-
-We recommend spending at least a portion of the time pair programming and working collaboratively from the same machine.  Zoom and screen sharing or [VSCode Live Share](https://code.visualstudio.com/learn/collaboration/live-share) are good tools to consider.  Some teams will choose to pair program and work collaboratively from the same machine for the entire project.  Some teams will choose to divide a portion of the work and combine their code using git. 
-
 ### Get Familiar
 
-Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests with your pair. Make sure you both can run `$ pytest` and see the tests fail.
+Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests. Make sure you can run `$ pytest` and see the tests fail.
 
-If, after you and your pair have taken some time to think through the problem and would like direction for how to dissect the problem, or if you need clarity on the terms/vocabulary we used in this project, you can check out [a small hint we've provided](./project_docs/hints.md).
+If, after you have taken some time to think through the problem and would like direction for how to dissect the problem, or if you need clarity on the terms/vocabulary we used in this project, you can check out [a small hint we've provided](./project_docs/hints.md).
 
 ### Wave 1: draw_letters
 
@@ -233,7 +196,7 @@ Your first task is to build a hand of 10 letters for the user. To do so, impleme
 | L : 4  | Y : 2 |
 | M : 2  | Z : 1 |
 
-**Note:** Making sure that the drawn letters match the rules of the letter pool can be straightforward or very difficult, depending on how you build the data structure for the letter pool. It is worth spending some time with your partner to think carefully about this.
+**Note:** Making sure that the drawn letters match the rules of the letter pool can be straightforward or very difficult, depending on how you build the data structure for the letter pool. It is worth spending some time to think carefully about this.
 
 
 ### Wave 2: use_available_letters
@@ -287,7 +250,3 @@ Implement a function called `get_highest_word_score` in `game.py`. This method s
     - prefer the word with the fewest letters...
     - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
     - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
-
-
-
-
