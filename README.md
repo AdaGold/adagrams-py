@@ -21,13 +21,15 @@ In this version of _Adagrams_, we will only be working with the English alphabet
 
 Follow these directions once, at the beginning of your project:
 
-1. Navigate to your projects folder named `projects`
+1. Navigate to your projects folder named `projects`.
+
+If you followed Ada's recommended file system structure from the Intro to Dev Environment lesson in Learn, you can navigate to your projects folder with the following command:
 
 ```bash
 $ cd ~/Developer/projects
 ```
 
-2. In Github click on the "Fork" button in github and fork the repository to your Github account.  This will make a copy of the project in your github account. 
+1. In Github click on the "Fork" button in github and fork the repository to your Github account.  This will make a copy of the project in your github account. 
 
 ![Fork Button](images/fork.png)
 
@@ -159,7 +161,7 @@ This will let us give feedback on what you've finished so that you can be better
 
 ### Get Familiar
 
-Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests. Make sure you can run `$ pytest` and see the tests fail.
+Take time to read through the Wave 1 implementation requirements and the tests for Wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests. Make sure you can run `$ pytest` and see the tests fail.
 
 If, after you have taken some time to think through the problem and would like direction for how to dissect the problem, or if you need clarity on the terms/vocabulary we used in this project, you can check out [a small hint we've provided](./project_docs/hints.md).
 
