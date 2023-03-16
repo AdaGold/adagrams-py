@@ -1,5 +1,7 @@
 # AdaGrams
 
+First project!
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
