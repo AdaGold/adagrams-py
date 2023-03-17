@@ -47,13 +47,8 @@ def draw_letters():
     
     return selected_letters
 
-# hand = ['Y', 'V', 'B', 'U', 'A', 'P', 'E', 'R', 'K', 'R']
-
 
 def uses_available_letters(word, letter_bank):
-    # hay que contar cuantas veces la usa también (analizar el letter bank)
-    # tiene que ver que no sea igual que el letter bank
-    # hay que pasar el input a mayusculas 
 
     # correct input
     new = word.upper()
@@ -73,11 +68,12 @@ def uses_available_letters(word, letter_bank):
             count_letters_in_new[letter] = 1
         else:
             count_letters_in_new[letter] += 1
+
     for k, v in count_letters_in_new.items():
         for key, value in count_letters_in_bank.items():
             if k == key:
                 if v <= value:
-
+                    print(f"value {value}")
                     return True
                 else:
                     return False
