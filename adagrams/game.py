@@ -119,5 +119,26 @@ def score_word(word):
     
     return total_score
 
-# def get_highest_word_score(word_list):
-#     pass
+def get_highest_word_score(word_list):
+    list_of_scores = []
+    for element in word_list:
+        score = score_word(element)
+        my_tuple = element, score
+        list_of_scores.append(my_tuple)
+
+    sorted_by_second = sorted(list_of_scores, key=lambda tup: tup[1], reverse=True)
+    if sorted_by_second[0][1] > sorted_by_second[1][1]:
+        return sorted_by_second[0]
+    else:
+        min_len = sorted_by_second[0][1]
+        list_of_shortest = []
+        for tup in sorted_by_second:
+            if len(tup[0]) == 10:
+                return tup
+            elif len(tup[0]) < min_len:
+                min_len = len(tup[0])
+                list_of_shortest.append(tup)
+        return list_of_shortest[-1]
+
+
+
