@@ -31,11 +31,14 @@ def draw_letters():
     }
     for i in LETTER_POOL:
         while len(list_of_letters) < 10:    
-            list_of_letters.append(i)
+            letter_chosen = random.choice(list(LETTER_POOL))
+            LETTER_POOL[letter_chosen] -= 1
+            if LETTER_POOL[letter_chosen] > 0:
+                list_of_letters.append(letter_chosen)
+            else: 
+                continue
         return list_of_letters
         
-    
-
 def uses_available_letters(word, letter_bank):
     pass
 
