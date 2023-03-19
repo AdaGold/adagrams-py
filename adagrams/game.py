@@ -41,9 +41,25 @@ def draw_letters():
 def uses_available_letters(word, letter_bank):
     ## word is a string 
     ## letter bank is list of letters 
-    #compare the word to letter bank 
-    for elem in word: 
-        if elem not in letter_bank:
+    
+    
+    #always make string 'word' be uppercase 
+    word = word.upper()
+    #generating a dictionary to keep track of how many each letter occurs in letter bank 
+    letter_frequency = {}
+    for letter in letter_bank:
+        if letter in letter_frequency:
+            letter_frequency[letter] += 1
+        else:
+            letter_frequency[letter] = 1    
+    #compare each letter in word to the key in letter frequency dictionary 
+    for elem in word: # loop through each letter in the word 
+        if elem in letter_frequency.keys(): 
+            if letter_frequency[elem] > 0:
+                letter_frequency[elem] -= 1
+            else: 
+                return False 
+        else:    
             return False  
     return True 
 
