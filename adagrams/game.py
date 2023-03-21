@@ -66,6 +66,52 @@ def uses_available_letters(word, letter_bank):
 
 def score_word(word):
     pass
+    #returns an integer representing the number of points 
+    #each letter has a point value and sum up the total score 
+    #if length of word is >7 then word gets additional 8 points 
+    # does not care about upper or lower case 
 
+    letter_score = {
+        "A" : 1,
+        "E" : 1, 
+        "I" : 1, 
+        "O" : 1,
+        "U" : 1, 
+        "L" : 1, 
+        "N" : 1, 
+        "R" : 1,
+        "S" : 1,
+        "T" : 1,
+        "D" : 2,
+        "G" : 2,
+        "B" : 3, 
+        "C" : 3, 
+        "M" : 3,
+        "P" : 3,
+        "F" : 4,
+        "H" : 4,
+        "V" : 4,
+        "W" : 4,
+        "Y" : 4,
+        "K" : 5,
+        "J" : 8, 
+        "X" : 8,
+        "Q" : 10, 
+        "Z" : 10
+    }
+
+    #turn every letter in the word to upper case 
+    word = word.upper()
+    total_score = 0 
+    # loop through each letter in the string "word"
+    for letter in word: 
+    # compare each letter to letters in the table 
+    # add the value of the letter to a variable called total_score
+        total_score += letter_score[letter]
+    # check if the word length is >=7 and if it is then add 8 to the total_score 
+    if len(word) >= 7: 
+        total_score += 8
+    # return the score 
+    return total_score 
 def get_highest_word_score(word_list):
     pass
