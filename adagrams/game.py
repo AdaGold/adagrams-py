@@ -49,7 +49,7 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-
+    # Check if input is valid and correct:
     # correct input
     new = word.upper()
     # check for new letters in bank and check doesnt copy letter bank
