@@ -39,10 +39,6 @@ def draw_letters():
     return list_of_letters
         
 def uses_available_letters(word, letter_bank):
-    ## word is a string 
-    ## letter bank is list of letters 
-    
-    
     #always make string 'word' be uppercase 
     word = word.upper()
     #generating a dictionary to keep track of how many each letter occurs in letter bank 
@@ -65,11 +61,6 @@ def uses_available_letters(word, letter_bank):
 
 
 def score_word(word):
-    #returns an integer representing the number of points 
-    #each letter has a point value and sum up the total score 
-    #if length of word is >7 then word gets additional 8 points 
-    # does not care about upper or lower case 
-
     letter_score = {
         "A" : 1,
         "E" : 1, 
@@ -98,13 +89,11 @@ def score_word(word):
         "Q" : 10, 
         "Z" : 10
     }
-
+    total_score = 0 
     #turn every letter in the word to upper case 
     word = word.upper()
-    total_score = 0 
     # loop through each letter in the string "word"
     for letter in word: 
-    # compare each letter to letters in the table 
     # add the value of the letter to a variable called total_score
         total_score += letter_score[letter]
     # check if the word length is >=7 and if it is then add 8 to the total_score 
@@ -114,38 +103,22 @@ def score_word(word):
     return total_score 
 
 def get_highest_word_score(word_list):
-    # returns a tuple (a string of a word, the score of that word)
     highest_scoring_word = ""
     highest_score = 0
-    for word in word_list:
+    for new_word in word_list:
         # find each score for word in the word_list 
-        score_for_one_word =score_word(word)
-        # if len(word) == 10: 
-        #     highest_score = score_for_one_word
-        #     highest_scoring_word = word
+        score_for_one_word = score_word(new_word)
+        #decide on tie breaker first 
         if score_for_one_word == highest_score:
-            if len(word) == 10:
-                if len(highest_scoring_word) == 10:
-                    continue
-                highest_score = score_for_one_word
-                highest_scoring_word = word
-            elif len(highest_scoring_word) > len(word):
-                if len(highest_scoring_word) == 10:
-                    continue
-                highest_scoring_word = word
-
+            # length of 10 letters trumps any word that is shorter 
+            if len(new_word) == 10 and len(highest_scoring_word)!= 10:
+                highest_scoring_word = new_word
+            # having fewer letters is a tie breaker as long as the current stored word's length is not 10
+            elif len(highest_scoring_word) > len(new_word) and len(highest_scoring_word) != 10:
+               highest_scoring_word = new_word
+        #Look for word with highest score 
         elif score_for_one_word > highest_score: 
             highest_score = score_for_one_word 
-            highest_scoring_word = word        
+            highest_scoring_word = new_word        
                 
-
-        
-        # elif score_for_one_word == highest_score: 
-        #     length_word = len(word)
-        #     length_highest_scoring_word = len(highest_scoring_word)
-
     return highest_scoring_word, highest_score 
-
-
-words = ["JQ", "FHQ", "AAAAAAAAAA", "BBBBBB", "TTTTTTTTTT"]
-get_highest_word_score(words)
