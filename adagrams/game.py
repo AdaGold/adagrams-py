@@ -99,7 +99,6 @@ def score_word(word):
     # check if the word length is >=7 and if it is then add 8 to the total_score 
     if len(word) >= 7: 
         total_score += 8
-    # return the score 
     return total_score 
 
 def get_highest_word_score(word_list):
@@ -119,6 +118,5 @@ def get_highest_word_score(word_list):
         #Look for word with highest score 
         elif score_for_one_word > highest_score: 
             highest_score = score_for_one_word 
-            highest_scoring_word = new_word        
-                
+            highest_scoring_word = new_word            
     return highest_scoring_word, highest_score 
