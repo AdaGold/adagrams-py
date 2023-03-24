@@ -1,4 +1,5 @@
 import random
+LETTER_HAND = 10
 LETTER_POOL = {
     'A': 9, 
     'B': 2, 
@@ -27,25 +28,49 @@ LETTER_POOL = {
     'Y': 2, 
     'Z': 1
 }
+
+def check_for_values(dict,list, letter):
+    count_letter = list.count(letter)
+    print(f"count letter: {count_letter}, letter {letter}")
+    print(dict[letter])
+    if dict[letter] >= count_letter:
+        return True
+    else:
+        return False
+
 def draw_letters():
     
-    # create a new pool of letters (every letter is there as many times as the value of the dic indicates)
-    letters = []
-    for k, v in LETTER_POOL.items():
-        letter_times = k * v
-        letters.append(letter_times)
-    big_string = ''.join(letters)
+    hand_list = []
+    while len(hand_list) < LETTER_HAND:
+        a_letter = random.choice(list(LETTER_POOL.keys()))
+        hand_list.append(a_letter)
+        value_enough_times = check_for_values(LETTER_POOL, hand_list, a_letter)
+        if value_enough_times is True:
+            continue
+        else:
+            hand_list.pop()
+            
+    return hand_list
+
+# old version: not brave enough to erase it.
+    # # create a new pool of letters (every letter is there as many times as the value of the dic indicates)
+    # letters = []
+    # for k, v in LETTER_POOL.items():
+    #     letter_times = k * v
+    #     letters.append(letter_times)
+    # big_string = ''.join(letters)
     
-    # select letters (random)
-    selected_letters = []
+    # # select letters (random)
+    # selected_letters = []
     
-    for i in range(0,10):
-        letter_for_list = random.choice(big_string)
-        selected_letters.append(letter_for_list)
-        index = big_string.index(letter_for_list)
-        big_string = big_string[:index]+ big_string[index+1:]
+    # for i in range(0,10):
+    #     letter_for_list = random.choice(big_string)
+    #     selected_letters.append(letter_for_list)
+    #     index = big_string.index(letter_for_list)
+    #     big_string = big_string[:index]+ big_string[index+1:]
     
-    return selected_letters
+    # return selected_letters
+
 
 
 def uses_available_letters(word, letter_bank):
