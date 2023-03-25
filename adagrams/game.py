@@ -29,6 +29,8 @@ LETTER_POOL = {
     'Z': 1
 }
 
+# wave 1:
+
 def check_for_values(dict,list, letter):
     count_letter = list.count(letter)
     print(f"count letter: {count_letter}, letter {letter}")
@@ -52,7 +54,7 @@ def draw_letters():
             
     return hand_list
 
-# old version: not brave enough to erase it.
+# wave 1 old version: not brave enough to erase it.
     # # create a new pool of letters (every letter is there as many times as the value of the dic indicates)
     # letters = []
     # for k, v in LETTER_POOL.items():
@@ -72,36 +74,46 @@ def draw_letters():
     # return selected_letters
 
 
-
+# Wave 2:
 def uses_available_letters(word, letter_bank):
-    # Check if input is valid and correct:
-    # correct input
-    new = word.upper()
-    # check for new letters in bank and check doesnt copy letter bank
-    for letter in new:
+
+    upper_word = word.upper()
+    for letter in upper_word:
         if letter not in letter_bank:
             return False
-    count_letters_in_bank = {}
-    for letter in letter_bank:
-        if letter not in count_letters_in_bank:
-            count_letters_in_bank[letter] = 1
+        elif upper_word.count(letter) > letter_bank.count(letter):
+            return False
         else:
-            count_letters_in_bank[letter] += 1
-    count_letters_in_new = {}
-    for letter in new:
-        if letter not in count_letters_in_new:
-            count_letters_in_new[letter] = 1
-        else:
-            count_letters_in_new[letter] += 1
+            continue
+    return True
 
-    for k, v in count_letters_in_new.items():
-        for key, value in count_letters_in_bank.items():
-            if k == key:
-                if v <= value:
-                    print(f"value {value}")
-                    return True
-                else:
-                    return False
+    # # Wave3 old version -not brave enough to erase-:
+    # new = word.upper()
+    # # check for new letters in bank and check doesnt copy letter bank
+    # for letter in new:
+    #     if letter not in letter_bank:
+    #         return False
+    # count_letters_in_bank = {}
+    # for letter in letter_bank:
+    #     if letter not in count_letters_in_bank:
+    #         count_letters_in_bank[letter] = 1
+    #     else:
+    #         count_letters_in_bank[letter] += 1
+    # count_letters_in_new = {}
+    # for letter in new:
+    #     if letter not in count_letters_in_new:
+    #         count_letters_in_new[letter] = 1
+    #     else:
+    #         count_letters_in_new[letter] += 1
+
+    # for k, v in count_letters_in_new.items():
+    #     for key, value in count_letters_in_bank.items():
+    #         if k == key:
+    #             if v <= value:
+    #                 print(f"value {value}")
+    #                 return True
+    #             else:
+    #                 return False
     
 
 def score_word(word):
@@ -144,26 +156,53 @@ def score_word(word):
     
     return total_score
 
-def get_highest_word_score(word_list):
-    list_of_scores = []
-    for element in word_list:
-        score = score_word(element)
-        my_tuple = element, score
-        list_of_scores.append(my_tuple)
+# Wave 4 old version:
+# def get_highest_word_score2(word_list):
+#     list_of_scores = []
+#     for element in word_list:
+#         score = score_word(element)
+#         my_tuple = element, score
+#         list_of_scores.append(my_tuple)
 
-    sorted_by_second = sorted(list_of_scores, key=lambda tup: tup[1], reverse=True)
-    if sorted_by_second[0][1] > sorted_by_second[1][1]:
-        return sorted_by_second[0]
-    else:
-        min_len = sorted_by_second[0][1]
-        list_of_shortest = []
-        for tup in sorted_by_second:
-            if len(tup[0]) == 10:
-                return tup
-            elif len(tup[0]) < min_len:
-                min_len = len(tup[0])
-                list_of_shortest.append(tup)
-        return list_of_shortest[-1]
+#     sorted_by_second = sorted(list_of_scores, key=lambda tup: tup[1], reverse=True)
+#     if sorted_by_second[0][1] > sorted_by_second[1][1]:
+#         return sorted_by_second[0]
+#     else:
+#         min_len = sorted_by_second[0][1]
+#         list_of_shortest = []
+#         for tup in sorted_by_second:
+#             if len(tup[0]) == 10:
+#                 return tup
+#             elif len(tup[0]) < min_len:
+#                 min_len = len(tup[0])
+#                 list_of_shortest.append(tup)
+#         return list_of_shortest[-1]
+    
+    
+# Wave 4:
+def higher_than(tuple1, tuple2):
+    '''returns True if word1 ranks higher than word2'''
+    score_word1 = tuple1[1]
+    score_word2 = tuple2[1]
+    if score_word1 == score_word2:
+        lenght_word1 = len(tuple1[0])
+        lenght_word2 = len(tuple2[0])
+        if lenght_word1 == 10 and lenght_word2 != 10:
+            return True
+        if lenght_word2 == 10 and lenght_word1 != 10:
+            return False
+        return lenght_word1 < lenght_word2
+    return score_word1 > score_word2
+
+
+def get_highest_word_score(word_list):
+    best_tuple = None
+    for word in word_list:
+        current_tuple = word, score_word(word)
+        if best_tuple is None or higher_than(current_tuple,best_tuple):
+            best_tuple = current_tuple
+    return best_tuple
+    
 
 
 

@@ -18,6 +18,7 @@ def test_score_zero_for_empty():
     # Assert
     assert score_word("") == 0
 
+
 def test_score_extra_points_for_seven_or_longer():
     # Assert
     assert score_word("XXXXXXX") == 64
