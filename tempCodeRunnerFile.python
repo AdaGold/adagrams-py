@@ -1,0 +1,5 @@
+list = [("XXX",1),("XCV",4),("DDD",7)("DER", 9),("ERT",3)]
+list_b = ["XXX", "XXXX", "XX", "X"]
+
+for i in range(len(list)):
+    print(list[i][0])

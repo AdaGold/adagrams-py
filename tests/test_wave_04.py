@@ -1,6 +1,54 @@
 import pytest
 
-from adagrams.game import score_word, get_highest_word_score
+from adagrams.game import score_word, get_highest_word_score, higher_than
+
+def test_rank_higher_than_returns_False_when_both_tuples_tie_and_have_10_letters():
+    tuple1 = ("AAAAAAAAAA",18)
+    tuple2 = ("BBBBBBBBBB",18)
+
+    result = higher_than(tuple1,tuple2)
+
+    assert result is False
+
+def test_rank_higher_than_returns_True_when_tuple1_has_10_letters():
+    tuple1 = ("AAAAAAAAAA",18)
+    tuple2 = ("QJ",18)
+
+    result = higher_than(tuple1,tuple2)
+
+    assert result is True
+
+def test_rank_higher_than_returns_True_when_scores_are_equal_but_tuple1_is_shorter():
+    tuple1 = ("QZ", 12)
+    tuple2 = ("VVVVV",12)
+
+    result = higher_than(tuple1,tuple2)
+
+    assert result is True
+
+def test_rank_higher_than_returns_False_when_scores_are_equal_but_tuple1_is_longer():
+    tuple2 = ("QZ",5)
+    tuple1 = ("VVVVV",5)
+
+    result = higher_than(tuple1,tuple2)
+
+    assert result is False
+
+def test_rank_higher_than_returns_True_when_tuple1_has_higher_score():
+    tuple1 = ("QZ",20)
+    tuple2 = ("AAA",10)
+
+    result = higher_than(tuple1, tuple2)
+
+    assert result is True
+
+def test_rank_higher_than_returns_False_when_tuple1_has_lower_score():
+    tuple1 = ("AAA",3)
+    tuple2 = ("QZ",10)
+
+    result = higher_than(tuple1, tuple2)
+
+    assert result is False
 
 def test_get_highest_word_score_accurate():
     # Arrange
