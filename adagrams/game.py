@@ -165,4 +165,4 @@ def get_highest_word_score(word_list):
         if len(word) == min_length and not current_winner:
             current_winner = word
 
-    return current_winner, word_score[current_winner]
+    return current_winner, max_score
