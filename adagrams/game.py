@@ -15,7 +15,7 @@ def draw_letters():
         else:
             available_letters[letter] = 1
     
-    for x in range(10):
+    while len(letter_bank) < 10:
         random_letter_index = randint(0, len(letter_pool) - 1)
         letter = letter_pool[random_letter_index]
 
@@ -25,18 +25,40 @@ def draw_letters():
 
     return letter_bank
 
-
-
-
-
-
-
-
-
-
-
 def uses_available_letters(word, letter_bank):
-    pass
+    word = word.lower()
+    letter_bank = [letter.lower() for letter in letter_bank]
+    letter_bank_dict = {}
+
+    for letter in letter_bank:
+        if letter in letter_bank_dict:
+            letter_bank_dict[letter] += 1
+        else:
+            letter_bank_dict[letter] = 1
+
+
+    letter_count = {}
+    for letter in word:
+        if letter in letter_count:
+            letter_count[letter] += 1
+        else:
+            letter_count[letter] = 1
+
+    for letter in letter_count:
+        if letter not in letter_bank_dict:
+            return False
+        elif letter_count[letter] > letter_bank_dict[letter]: 
+            return False
+    return True
+    
+
+
+
+
+
+
+
+
 
 def score_word(word):
     pass
