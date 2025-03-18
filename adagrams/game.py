@@ -26,10 +26,10 @@ def draw_letters():
     return letter_bank
 
 def uses_available_letters(word, letter_bank):
-    word = word.lower()
-    letter_bank = [letter.lower() for letter in letter_bank]
-    letter_bank_dict = {}
+    word = word.upper()
+    letter_bank = [letter.upper() for letter in letter_bank]
 
+    letter_bank_dict = {}
     for letter in letter_bank:
         if letter in letter_bank_dict:
             letter_bank_dict[letter] += 1
@@ -52,17 +52,58 @@ def uses_available_letters(word, letter_bank):
     return True
     
 
-
-
-
-
-
-
-
-
 def score_word(word):
-    pass
+    word = word.upper()
+    total_points = 0
+    
+    one_point = ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T']
+    two_point = ['D', 'G']
+    three_point = ['B', 'C', 'M', 'P']
+    four_point = ['F', 'H', 'V', 'W', 'Y']
+    five_point = ['K']
+    eight_point = ['J', 'X']
+    ten_point = ['Q', 'Z']
+
+    for letter in word.upper():
+        if letter in one_point:
+            total_points += 1
+        elif letter in two_point:
+            total_points += 2
+        elif letter in three_point:
+            total_points += 3
+        elif letter in four_point:
+            total_points += 4
+        elif letter in five_point:
+            total_points += 5
+        elif letter in eight_point:
+            total_points += 8
+        elif letter in ten_point:
+            total_points += 10
+        
+    if len(word) >= 7:
+        total_points += 8
+
+    return total_points
 
 def get_highest_word_score(word_list):
-    pass
+    highest_score = 0
+    best_word = ""
+    
+    for word in word_list:
+        score = score_word(word)
 
+        if score > highest_score:
+            best_word = word
+            highest_score = score
+        
+        elif score == highest_score:
+            if len(word) == 10 and len(best_word) != 10:
+                best_word = word
+            
+            elif len(best_word) == 10:
+                continue
+
+            elif len(word) < len(best_word):
+                best_word = word
+            
+    return (best_word, highest_score)
