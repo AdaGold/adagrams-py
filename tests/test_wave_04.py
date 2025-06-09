@@ -116,7 +116,7 @@ def test_get_highest_word_many_ties_pick_shortest():
 
 def test_get_highest_word_does_not_return_early_after_first_tiebreaker():
     # Arrange
-    words = ["WWW", "MMMM", "BBBBBB", "AAAAAAAAD", "JQ", "KFHK"]
+    words = ["WWW", "MMMM", "BBBBBB", "AAAAAAAAD", "JQ", "KFHK", "A"]
 
     # Act
     best_word = get_highest_word_score(words)

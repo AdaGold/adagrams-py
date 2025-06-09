@@ -74,3 +74,18 @@ def test_draw_letters_returns_different_hands():
 
     # Assert
     assert hand1 != hand2 or hand2 != hand3
+
+def test_ever_draws_duplicate_letters():
+    # Arrange
+    def has_dupes(letter_bank):
+        unique_letters = set(letter_bank)
+        return len(unique_letters) != len(letter_bank)
+
+    # Act
+    saw_a_duplicate = False
+    for i in range(1000):
+        letters = draw_letters()
+        saw_a_duplicate = saw_a_duplicate or has_dupes(letters)
+
+    # Assert
+    assert saw_a_duplicate
