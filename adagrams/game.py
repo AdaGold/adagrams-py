@@ -45,12 +45,15 @@ def get_draw_pool():
 def draw_letters():
     get_letter = []
     draw_pool = get_draw_pool()
-    for i in range(0, 10):
-        r = randint(0, len(get_draw_pool())-1)
+
+    for _ in range(10):
+        r = randint(0, len(draw_pool)-1)
         get_letter.append(draw_pool[r])
+        draw_pool.pop(r)
+        
     return get_letter
 
-# print(draw_letters())
+print(draw_letters())
 
 
 # def uses_available_letters(word, letter_bank):
