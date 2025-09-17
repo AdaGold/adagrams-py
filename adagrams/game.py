@@ -53,14 +53,25 @@ def draw_letters():
         
     return get_letter
 
-print(draw_letters())
 
 
-# def uses_available_letters(word, letter_bank):
-#     def helper_function():
+def uses_available_letters(word, letter_bank):
+    pool = [] 
+    for i in letter_bank:
+        pool.append(i)
 
-# def score_word(word):
-#     pass
+    for cha in word.upper():
+        # cha = chara.capitalize()
+        if cha in pool:
+            pool.remove(cha)
+        else:
+            return False
+    
+    return True
+        
 
-# def get_highest_word_score(word_list):
-#     pass
+def score_word(word):
+    pass
+
+def get_highest_word_score(word_list):
+    pass
