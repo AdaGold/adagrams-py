@@ -29,6 +29,26 @@ LETTER_POOL = {
     'Z': 1
 }
 
+SCORE_CHART = {
+    1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
+    2: ["D", "G"],
+    3: ["B", "C", "M", "P"],
+    4: ["F", "H", "V", "W", "Y"],
+    5: ["K"],
+    8: ["J","X"],
+    10: ["Q","Z"]  
+}
+
+# SCORE_CHART_A = {
+#     "AEIOULNRST": 1,
+#     "DG": 2,
+#     "BCMP": 3,
+#     "FHVWY": 4,
+#     "K": 5,
+#     "JX": 8,
+#     "QZ":10
+# }
+
 def get_draw_pool():
     draw_pool = []
 
@@ -56,9 +76,9 @@ def draw_letters():
 
 
 def uses_available_letters(word, letter_bank):
-    pool = [] 
-    for i in letter_bank:
-        pool.append(i)
+    pool = letter_bank[:] 
+    # for i in letter_bank:
+    #     pool.append(i)
 
     for cha in word.upper():
         # cha = chara.capitalize()
@@ -68,10 +88,19 @@ def uses_available_letters(word, letter_bank):
             return False
     
     return True
-        
 
 def score_word(word):
-    pass
+    the_score = 0
+    for cha in word.upper():
+        for score, k in SCORE_CHART.items():
+            if cha in k:
+                the_score += score
+    
+    if 7 <= len(word) <= 10:
+        the_score += 8
+
+    return the_score
+
 
 def get_highest_word_score(word_list):
     pass
