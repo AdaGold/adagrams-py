@@ -39,16 +39,6 @@ SCORE_CHART = {
     10: ["Q","Z"]  
 }
 
-# SCORE_CHART_A = {
-#     "AEIOULNRST": 1,
-#     "DG": 2,
-#     "BCMP": 3,
-#     "FHVWY": 4,
-#     "K": 5,
-#     "JX": 8,
-#     "QZ":10
-# }
-
 def get_draw_pool():
     draw_pool = []
 
@@ -149,3 +139,14 @@ def get_highest_word_score(word_list):
         #         highest_index = i
         # elif win_word[i] == highest_score and len(word_list[i]) == len(word_list[highest_index]):
         #     continue
+
+# This is another way to imolement score_word(word)
+# SCORE_CHART_A = {
+#     "AEIOULNRST": 1,
+#     "DG": 2,
+#     "BCMP": 3,
+#     "FHVWY": 4,
+#     "K": 5,
+#     "JX": 8,
+#     "QZ":10
+# }
