@@ -103,4 +103,49 @@ def score_word(word):
 
 
 def get_highest_word_score(word_list):
-    pass
+    win_word = []
+    for w in word_list:
+        win_word.append(score_word(w))
+
+    highest_score = win_word[0]
+    highest_index = 0
+
+    for i in range(1, len(win_word)): # shouldn't be len()-1? watch out the range()
+        if win_word[i] == highest_score:
+            if len(word_list[i]) == len(word_list[highest_index]):
+                continue
+            elif len(word_list[highest_index]) == 10:
+                pass
+            elif len(word_list[i]) == 10 or len(word_list[highest_index]) > len(word_list[i]):
+                highest_score = win_word[i]
+                highest_index = i
+        elif win_word[i] > highest_score:
+            highest_index = i
+            highest_score = win_word[highest_index]
+    
+    highest_word = (word_list[highest_index], highest_score)
+   
+    return highest_word
+
+        # below could replace line 114 - 124
+        # if win_word[i] > highest_score:
+        #     highest_index = i
+        #     highest_score = win_word[highest_index]
+        # elif win_word[i] < highest_score:
+        #     highest_index = highest_index
+        #     highest_score = win_word[highest_index]
+        # elif win_word[highest_index] == highest_score:
+        #     if len(word_list[highest_index]) == 10:
+        #         highest_score = win_word[highest_index]
+        #         highest_index = highest_index
+        #     elif len(word_list[i]) == 10:
+        #         highest_score = win_word[i]
+        #         highest_index = i
+        #     elif len(word_list[highest_index]) < len(word_list[i]):
+        #         highest_score = win_word[highest_index]
+        #         highest_index = highest_index
+        #     elif len(word_list[highest_index]) > len(word_list[i]):
+        #         highest_score = win_word[i]
+        #         highest_index = i
+        # elif win_word[i] == highest_score and len(word_list[i]) == len(word_list[highest_index]):
+        #     continue
